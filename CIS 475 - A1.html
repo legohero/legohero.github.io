@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<title>CIS 475 - Assignmnet 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+	$(document).on("pagecreate",function(event){
+		$(window).on("orientationchange",function(event){
+			$(".orientation").text("You are in " + event.orientation + " mode.");
+		});                     
+	});
+</script>
+<!--<script>
+	$(document).on("pagecreate",function(event){
+		$("div").on("tap",function(){
+			$("this").buttonMarkup({theme: "a"});
+		});
+	});
+</script>-->
+</head>
+
+<body>
+<!-- Start of first page -->
+<div data-role="page" id="home">
+	<div data-role="header" data-theme="b">
+    	<h1>Home</h1>
+		<a href="theme-a.html" data-rolo="button" class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-notext">Theme</a>
+		<div data-role="navbar">
+    		<ul>
+    			<li><a href="#home" class="ui-btn-active" data-icon="home">Home</a></li>
+    			<li><a href="#contact" data-icon="grid">Contact</a></li>
+    		</ul>
+    	</div>
+  	</div><!-- /header -->
+
+  	<div data-role="main" class="ui-content">
+   		<h3>Seriously cross-platform with HTML5</h3>
+    	<p>jQuery Mobile framework takes the "write less, do more" mantra to the next level: Instead of writing unique applications for each mobile device or OS, the jQuery mobile framework allows you to design a single highly-branded responsive web site or application that will work on all popular smartphone, tablet, and desktop platforms.</p>
+    	<p class="orientation">Orientationchange Not Supported on this Device.</p>
+ 	</div><!-- /content -->
+
+  	<div data-role="footer" data-theme="b">
+  	  <h1>Copyright 2017</h1>
+  	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of second page -->
+<div data-role="page" id="contact">
+  	<div data-role="header" data-theme="b">
+    	<h1>Contact</h1>
+    	<div data-role="navbar">
+    		<ul>
+    			<li><a href="#home" data-icon="home">Home</a></li>
+    			<li><a href="#contact" class="ui-btn-active" data-icon="grid">Contact</a></li>
+    		</ul>
+    	</div>
+  	</div><!-- /header -->
+
+  	<div data-role="main" class="ui-content">
+    	<h3>My Contacts</h3>
+    		<form class="ui-filterable">
+    			<input id="myFilter" data-type="search" placeholder="Search for names..">
+    		</form>
+		  	<ul data-role="listview" data-autodividers="true" data-inset="true" data-filter="true" data-input="#myFilter">
+				<li><a href="#contactInfo">Adele</a></li>
+				<li><a href="#contactInfo">Agnes</a></li>
+				<li><a href="#contactInfo">Albert</a></li>
+				<li><a href="#contactInfo">Billy</a></li>
+				<li><a href="#contactInfo">Bob</a></li>
+				<li><a href="#contactInfo">Calvin</a></li>
+				<li><a href="#contactInfo">Cameron</a></li>
+				<li><a href="#contactInfo">Chloe</a></li>
+				<li><a href="#contactInfo">Christina</a></li>
+				<li><a href="#contactInfo">Diana</a></li>
+				<li><a href="#contactInfo">Gabriel</a></li>
+				<li><a href="#contactInfo">Glen</a></li>
+				<li><a href="#contactInfo">Ralph</a></li>
+				<li><a href="#contactInfo">Valarie</a></li>
+		 	 </ul>
+			 <p>jQuery Mobile is a HTML5-based user interface system designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices.</p>
+			 <p class="orientation">Orientationchange Not Supported on this Device.</p>
+  	</div><!-- /content -->
+
+  	<div data-role="footer" data-theme="b">
+    	<h1>Contacts from 2016</h1>
+  	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of dialog page -->
+<div data-role="page" id="contactInfo" data-dialog="true">
+	<div data-role="header">
+		<h1>John Doe</h1>
+	</div><!--/header-->
+	
+	<div data-role="main" class="ui-content">
+		<h2>Mobile: 417-123-4567</h2>
+	</div><!--/content-->
+</div><!--/page-->
+
+</body>
+</html>
