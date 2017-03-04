@@ -1,40 +1,93 @@
-<!doctyoe html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<title>AngularJS Assignment</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
-<body>
-<div ng-app="myApp" ng-controller="formCtrl">
-<h1>Mega Travel</h1>
-	<form>
-		Adults (15+) <select ng-model="selectedNumOfAdults" ng-options="x for x in numOfAdults"></select><br>
-		Children (0-14) <select ng-model="selectedNumOfChildren" ng-options="x for x in numOfChildren"></select><br>
-		Departure Date: <input type="date" ng-model="selectedDepartureDate"></input><br>
-		Return Date: <input type="date" ng-model="selectedReturnDate"></input><br>
-		Destination: <select ng-model="selectedDestination" ng-options="x.City + ', ' + x.Country for x in myDestinations"></select><br>
-		<button ng-click="submit()">Submit</button>
-		<button ng-click="reset()">Reset</button><br>
+
+<body ng-app="formApp" ng-controller="formCtrl">
+<div class="container">
+<div class="col-md-6 col-md-offset-3">
+
+	<div class="page-header">
+		<h1><span class="glyphicon glyphicon-plane"></span> Mega Travel</h1>
+	</div>
+
+	<form name="form">
+		<div class="form-group">
+			<label>Adults (15+)</label>
+		  <select ng-model="formData.numOfAdults" ng-options="x for x in numOfAdults" required></select>
+    		<label>Children (0-14)</label>
+			<select ng-model="formData.numOfChildren" ng-options="x for x in numOfChildren" required></select>     		
+      		<span class="help-block"></span>
+		</div>
+	  <div class="form-group">
+			<label>Departure Date:</label>
+		<input type="date" ng-model="formData.departureDate" required></input>	
+      		<span class="help-block"></span>
+	  </div>
+	  <div class="form-group">
+			<label>Return Date:</label>
+			<input type="date" ng-model="formData.returnDate" required></input>	
+      		<span class="help-block"></span>
+	  </div>
+		<div class="form-group">
+			<label>Destination:</label>
+			<select ng-model="formData.destination" ng-options="x.City + ', ' + x.Country for x in myDestinations" required></select>	
+      		<span class="help-block"></span>
+		</div>
 		Activities Available:
 		<ul>
-			<li ng-repeat="x in selectedDestination.Activities">{{x}}</li>
+			<li ng-repeat="x in formData.destination.Activities">{{x}}</li>
 		</ul>
+		<div class="form-group">
+			<label>First Name:</label>
+			<input type="text" ng-model="formData.firstName" required>
+      		<span class="help-block"></span>
+		</div>
+	  <div class="form-group">
+			<label>Last Name:</label>
+			<input type="text" ng-model="formData.lastName" required>
+      		<span class="help-block"></span>
+	  </div>
+	  <div class="form-group">
+			<label>E-mail:</label>
+			<input type="email" id="email" ng-model="formData.email" required>
+      		<span class="help-block"></span>
+	  </div>
+		<button ng-click="submitForm()" type="submit" class="btn btn-success btn-md">Submit!</button>
+		<button ng-click="resetForm()" type="button" class="btn btn-info btn-md">Reset</button>
+		<br><br>
 	</form>
 </div>
+</div>
 <script>
-var app = angular.module('myApp', []);
+var app = angular.module('formApp', []);
 app.controller('formCtrl', function($scope, $http) {
 	$http.get("destinations.php").then(function (response) {
 		$scope.myDestinations = response.data.destinations;
 	});
 	$scope.numOfAdults = [1,2,3,4,5,6,7,8,9];
 	$scope.numOfChildren = [0,1,2,3];
-	// 2 way data binding
-	$scope.selectedNumOfAdults = 1;
-	$scope.selectedNumOfChildren = 0;
-	$scope.selectedDepartureDate = "";
-	$scope.selectedReturnDate = "";
-	$scope.selectedDestination = "";
-	
+	$scope.formData = {"numOfAdults":1,"numOfChildren":0};
+	$scope.submitForm = function() {};
+	$scope.resetForm = function() {
+		$scope.formData.numOfAdults = 1;
+		$scope.formData.numOfChildren = 0;
+		$scope.formData.departureDate = null;
+		$scope.formData.returnDate = null;
+		$scope.formData.destination = null;
+		$scope.formData.firstName = null;
+		$scope.formData.lastName = null;
+		$scope.formData.email = null;
+	};
 });
 </script>	
 </body>
