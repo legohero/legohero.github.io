@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<title>PHP Form Submit Assignment</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body ng-app="formApp" ng-controller="formCtrl">
+<div class="container">
+<div class="col-md-6 col-md-offset-3">
+
+	<div class="page-header">
+		<img src="logo.jpg" class="img-responsive" alt="Mega Travel Logo" width="250">
+		<h1><span class="glyphicon glyphicon-plane"></span> Mega Travel</h1>
+	</div>
+
+	<form action="process.php" method="post">
+		<div class="form-group">
+			<label>Adults (15+)</label>
+		  <select name="numOfAdults" ng-model="formData.numOfAdults" ng-options="x for x in numOfAdults track by x" required></select>
+    		<label>Children (0-14)</label>
+			<select name="numOfChildren" ng-model="formData.numOfChildren" ng-options="x for x in numOfChildren track by x" required></select>     		
+      		<span class="help-block"></span>
+		</div>
+	  <div class="form-group">
+			<label>Departure Date:</label>
+			<input name="departureDate" type="date" ng-model="formData.departureDate" required></input>	
+      		<span class="help-block"></span>
+	  </div>
+	  <div class="form-group">
+			<label>Return Date:</label>
+			<input name="returnDate" type="date" ng-model="formData.returnDate" required></input>	
+      		<span class="help-block"></span>
+	  </div>
+		<div class="form-group">
+			<label>Destination:</label>
+			<select name="destination" type="text" ng-model="formData.destination" ng-options="x.City + ', ' + x.Country for x in myDestinations track by x.City + ', ' + x.Country" required></select>
+			<select name="activities" type="text" ng-hide="true" ng-model="formData.destination" ng-options="x.City + ', ' + x.Country for x in myDestinations track by x.Activities"></select>
+      		<span class="help-block"></span>
+		</div>
+		<div class="form-group">
+		<label>Activities Available:</label>
+		<ul>
+			<li ng-repeat="x in formData.destination.Activities">{{x}}</li>
+		</ul>
+		<div class="form-group">
+			<label>First Name:</label>
+			<input name="firstName" type="text" ng-model="formData.firstName" required>
+      		<span class="help-block"></span>
+		</div>
+	  <div class="form-group">
+			<label>Last Name:</label>
+			<input name="lastName" type="text" ng-model="formData.lastName" required>
+      		<span class="help-block"></span>
+	  </div>
+	  <div class="form-group">
+			<label>E-mail:</label>
+			<input name ="email" type="email" id="email" ng-model="formData.email" required>
+      		<span class="help-block"></span>
+	  </div>
+	  <div class="form-group">
+			<label>Phone number:</label>
+			<input name="phoneNumber" type="number" ng-model="formData.phoneNumber" required>
+      		<span class="help-block"></span>
+	  </div>
+	  <div class="form-group">
+			<button type="submit" class="btn btn-success btn-md">Submit!</button>
+			<button ng-click="resetForm()" class="btn btn-info btn-md">Reset</button>
+			<span class="help-block"></span>
+	  </div><br>
+	</form>
+</div>
+</div>
+
+<script>
+var app = angular.module('formApp', []);
+app.controller('formCtrl', function($scope, $http) {
+	$http.get("destinations.php").then(function (response) {
+		$scope.myDestinations = response.data.destinations;
+	});
+	$scope.numOfAdults = [1,2,3,4,5,6,7,8,9];
+	$scope.numOfChildren = [0,1,2,3];
+	$scope.formData = {"numOfAdults":1,
+					   "numOfChildren":0,
+					   "departureDate":"",
+					   "returnDate":"",
+					   "destination":"",
+					   "activities":"",
+					   "firstName":"Joey",
+					   "lastName":"Tribbiani",
+					   "email":"joey@tribbiani.com",
+					   "phoneNumber":4171234567};
+
+	$scope.resetForm = function() {
+		$scope.formData.numOfAdults = 1;
+		$scope.formData.numOfChildren = 0;
+		$scope.formData.departureDate = null;
+		$scope.formData.returnDate = null;
+		$scope.formData.destination = null;
+		$scope.formData.activities = null;
+		$scope.formData.firstName = null;
+		$scope.formData.lastName = null;
+		$scope.formData.email = null;
+		$scope.formData.phoneNumber = null;
+	};
+});
+</script>
+
+</body>
+</html>
