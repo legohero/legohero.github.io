@@ -1,6 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*
+~
+stylesheet for Resume
+~
+*/
+
+/*header*/
 #top{
 	position: relative;
 	font-family: "league-gothic";
@@ -23,6 +30,7 @@
 	text-align: center;
 }
 
+/*responsive adaptation*/
 @media screen and (min-width: 770px) {
   	#top h1 {
     	font-size: 94pt;
@@ -61,6 +69,7 @@
   	}
 }
 
+/*address*/
 #info, #info2 {
 	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAR0lEQVQoU2OMY+D8z0AAyJsYMzASUghS9PDMWfwKYYpAFuI0EVkRToXoirAqxKYIQyEuRSgK8SmCKySkCKyw1sTmPyicCAEAU60pjZtxof0AAAAASUVORK5CYII=) repeat!important;
 	font-family: "league-gothic";
@@ -72,6 +81,7 @@
 	text-align: center;
 }
 
+/*body*/
 #middle h1, #middle h2, #middle h3 {
 	font-family: "league-gothic";
 }
@@ -108,12 +118,13 @@
 
 
 
+/*
+~
+stylesheet for Cover Letter
+~
+*/
 
-
-
-
-
-
+/*header*/
 #CoverLettertop {
 	background-image: url("coverletter pic.jpg");
 	background-size: cover;
@@ -152,7 +163,7 @@
 	margin: 20px 0;
 }
 
-
+/*address*/
 #CoverLetterAddress {
 	font-family: 'Montserrat';
 }
@@ -162,16 +173,19 @@
 	padding: 35px;
 }
 
+/*date*/
 #date {
 	float: right;
 }
 
+/*body*/
 #main {
 	font-family: 'Montserrat';
 	font-size: 10pt;
 	padding: 0 50px 50px 50px;
 }
 
+/*signature*/
 #signature {
 	font-family: 'Alex Brush', cursive;
 	font-size: 24pt;
