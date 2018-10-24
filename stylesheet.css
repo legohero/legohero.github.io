@@ -11,18 +11,54 @@
 }
 
 #top h1 {
-	font-size: 94pt;
 	color: white;
 	text-shadow: -2px -2px rgba(94,0,9,1.00), -2px -2px white;
 	
-	position: absolute;
+	position: absolute!important;
 	margin-left: auto;
 	margin-right: auto;
 	left: 0;
 	right: 0;
 	
-	bottom: -33px;
 	text-align: center;
+}
+
+@media screen and (min-width: 770px) {
+  	#top h1 {
+    	font-size: 94pt;
+		bottom: -39px;
+  	}
+}
+
+@media screen and (max-width: 770px) {
+  	#top h1 {
+    	font-size: 50pt;
+		bottom: -20px;
+  	}
+}
+
+@media screen and (min-width: 770px) {
+  	#top {
+		height: 150pt;
+  	}
+}
+
+@media screen and (max-width: 770px) {
+  	#top {
+		height: 100pt;
+  	}
+}
+
+@media screen and (min-width: 770px) {
+  	#info h2 , #info2 h2 {
+		font-size: 22pt;
+  	}
+}
+
+@media screen and (max-width: 770px) {
+  	#info h2 , #info2 h2 {
+		font-size: 12pt;
+  	}
 }
 
 #info, #info2 {
@@ -32,7 +68,6 @@
 }
 
 #info h2 , #info2 h2{
-	font-size: 22pt;
 	color: white;
 	text-align: center;
 }
